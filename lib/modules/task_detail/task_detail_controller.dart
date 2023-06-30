@@ -3,6 +3,7 @@ import 'package:coteccons_app/api/api.dart';
 import 'package:coteccons_app/models/models.dart';
 import 'package:coteccons_app/shared/shared.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class TaskDetailController extends GetxController {
   final TaskRepository _taskRepository = Get.find();
@@ -56,5 +57,17 @@ class TaskDetailController extends GetxController {
       fetchInfo();
       CommonWidget.toastSuccess("Thành công!");
     });
+  }
+
+  void openCamera() async {
+    final picker = ImagePicker();
+    final image = await picker.pickImage(source: ImageSource.camera);
+    if (image != null) {
+      //send image
+      _taskRepository.uploadCONSImage(task.id!, image).then((value) {
+        fetchInfo();
+        CommonWidget.toastSuccess("Thành công!");
+      });
+    }
   }
 }

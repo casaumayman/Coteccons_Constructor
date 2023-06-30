@@ -11,12 +11,15 @@ class HomeController extends GetxController {
 
   @override
   void onReady() {
-    taskRepository.getList().then((taskList) {
-      if (taskList != null) {
-        tasks.addAll(taskList);
-      }
-    });
+    fetchData();
     super.onReady();
+  }
+
+  Future<void> fetchData() async {
+    final taskList = await taskRepository.getList();
+    if (taskList != null) {
+      tasks.addAll(taskList);
+    }
   }
 
   void logout() {

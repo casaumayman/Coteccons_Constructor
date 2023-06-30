@@ -16,12 +16,16 @@ class TaskDetailScreen extends GetView<TaskDetailController> {
       title: controller.task.name,
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Obx(() => InfoRows(task: controller.taskDetail.value)),
             Obx(() {
               final listImg = (controller.taskDetail.value?.ownerImages ?? []);
-              return ImagesInput(label: "Ảnh từ CTC", images: listImg);
+              return ImagesInput(
+                label: "Ảnh từ CTC",
+                images: listImg,
+                disabled: true,
+              );
             }),
             Obx(() {
               final listImg =
@@ -29,7 +33,7 @@ class TaskDetailScreen extends GetView<TaskDetailController> {
               return ImagesInput(
                 label: "Ảnh từ constructor",
                 images: listImg,
-                disabled: true,
+                onTap: controller.openCamera,
               );
             }),
             Obx(() {
@@ -37,33 +41,18 @@ class TaskDetailScreen extends GetView<TaskDetailController> {
               return Comments(commemts: comments);
             }),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             SafeArea(
                 top: false,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton(
-                          onPressed: () {
-                            controller.changeStatus(TaskStatus.REJECTED);
-                          },
-                          child: Text(
-                            "Yêu cầu làm lại",
-                            style: TextStyle(color: hexToColor("#081D4D")),
-                          )),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                        child: ElevatedButton(
-                            onPressed: () {
-                              controller.changeStatus(TaskStatus.ACCEPTED);
-                            },
-                            child: Text("Hoàn tất")))
-                  ],
-                ))
+                child: ElevatedButton(
+                    onPressed: () {
+                      controller.changeStatus(TaskStatus.REQUESTED);
+                    },
+                    child: Text(
+                      "Hoàn tất",
+                      style: TextStyle(color: Colors.white),
+                    )))
           ],
         ),
       ),
