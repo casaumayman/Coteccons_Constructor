@@ -1,0 +1,39 @@
+@port = 8080
+@host = coteccons.info 
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMDYtMzBUMDI6MDk6NTAuMzcyMjY1NzQ2KzA3OjAwIiwidXNlcl9pZCI6Mn0.2k8rOBn6b8oNfhyyZgrqCZ7B63S8CnurSZA7zB05KOk
+@task = tasks
+@comment = comments
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/{{task}}/8/{{comment}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"msg":"First commemt"}
+###
+
+# Read
+GET http://{{host}}/api/v1/{{task}}/8/{{comment}} HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{task}}/8/{{comment}}/5 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+{{token}}
+###
