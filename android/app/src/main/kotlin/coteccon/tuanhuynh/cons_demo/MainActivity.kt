@@ -1,4 +1,4 @@
-package coteccon.tuanhuynh.demo
+package coteccon.tuanhuynh.cons_demo
 
 import io.flutter.embedding.android.FlutterActivity
 

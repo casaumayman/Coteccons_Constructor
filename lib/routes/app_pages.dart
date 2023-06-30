@@ -1,4 +1,3 @@
-import 'package:coteccons_app/modules/add_task/add_task.dart';
 import 'package:coteccons_app/modules/auth/auth.dart';
 import 'package:coteccons_app/modules/home/home.dart';
 import 'package:coteccons_app/modules/image_view/image_view.dart';
@@ -21,10 +20,6 @@ class AppPages {
         name: Routes.LOGIN, page: () => LoginScreen(), binding: AuthBinding()),
     GetPage(
         name: Routes.HOME, page: () => HomeScreen(), binding: HomeBinding()),
-    GetPage(
-        name: Routes.ADD_TASK,
-        page: () => AddTaskScreen(),
-        binding: AddTaskBinding()),
     GetPage(
         name: Routes.TASK_DETAIL,
         page: () => TaskDetailScreen(),

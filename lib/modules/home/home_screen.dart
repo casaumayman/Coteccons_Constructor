@@ -22,7 +22,7 @@ class HomeScreen extends GetView<HomeController> {
             ),
             AddTaskButton(
               onPress: () {
-                Get.toNamed(Routes.ADD_TASK);
+                // Get.toNamed(Routes.ADD_TASK);
               },
             ),
           ],

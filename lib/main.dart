@@ -27,8 +27,8 @@ class App extends StatelessWidget {
       getPages: AppPages.routes,
       initialBinding: AppBinding(),
       smartManagement: SmartManagement.keepFactory,
-      title: 'Coteccons',
-      theme: ThemeConfig.lightTheme,
+      title: 'Coteccons constructor',
+      theme: appTheme,
       builder: EasyLoading.init(),
     );
   }
